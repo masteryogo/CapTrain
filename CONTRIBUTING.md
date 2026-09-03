@@ -14,12 +14,13 @@ Clone the repo and set up a local dev environment:
 git clone https://github.com/masteryogo/cap-models.git
 cd cap-models
 
-# Create a virtual environment
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
+# Sync dependencies (creates .venv with Python from .python-version)
+uv sync --extra dev
 
-# Install in editable mode with dev dependencies
-pip install -e ".[dev]"
+# Run the test suite, linter, and type checks
+uv run pytest
+uv run ruff check .
+uv run mypy src
 ```
 
 ## How to Contribute
